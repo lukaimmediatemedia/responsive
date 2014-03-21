@@ -7,14 +7,19 @@ namespace responsive
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+            //SASS
+            var sass = new StyleBundle("~/content/sass");
+            sass.Include("~/Content/sass/main.css");
+            bundles.Add(sass);
 
+            //jQuery
+            var jQuery = new ScriptBundle("~/bundles/jquery");
+            jQuery.Include("~/Scripts/jquery/jquery-{version}.js");
+            bundles.Add(jQuery);
+
+            //MODERNIZR
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
-
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/sass/main.css"));
-
+                        "~/Scripts/modernizr/modernizr-*"));
         }
     }
 }
